@@ -58,6 +58,7 @@ static const int64 MAX_MONEY = 84000000 * COIN;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
 static const int COINBASE_MATURITY = 1;
+static const int COINBASE_MATURITY_BUMP = 0; //20 in actual client
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 /** Maximum number of script-checking threads allowed */
@@ -480,6 +481,7 @@ public:
     static int64 nMinRelayTxFee;
     static const int CURRENT_VERSION=1;
     int nVersion;
+    double odds;
     std::vector<CTxIn> vin;
     std::vector<CTxOut> vout;
     unsigned int nLockTime;
@@ -493,14 +495,16 @@ public:
     (
         READWRITE(this->nVersion);
         nVersion = this->nVersion;
+        READWRITE(odds);
         READWRITE(vin);
         READWRITE(vout);
         READWRITE(nLockTime);
     )
 
-    void SetNull()
+    virtual void SetNull()
     {
         nVersion = CTransaction::CURRENT_VERSION;
+        odds = 0;
         vin.clear();
         vout.clear();
         nLockTime = 0;
@@ -689,7 +693,6 @@ void UpdateCoins(const CTransaction& tx, CValidationState &state, CCoinsViewCach
 protected:
     static const CTxOut &GetOutputFor(const CTxIn& input, CCoinsViewCache& mapInputs);
 };
-
 /** wrapper for CTxOut that provides a more compact serialization */
 class CTxOutCompressor
 {
