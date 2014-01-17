@@ -31,7 +31,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x5ac0d8ac8b02df41b3f987277cfc92845132a9ead0fa2b0b5a90af0eff6d747d");
+uint256 hashGenesisBlock("0x8bf569394c583cbd2cdf757d3565816e8d78174071ae7d8ac7d76546c7807dec");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // ChanceCoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -921,7 +921,7 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!IsCoinBase())
         return 0;
-    return max(0, (COINBASE_MATURITY+20) - GetDepthInMainChain());
+    return max(0, (COINBASE_MATURITY+COINBASE_MATURITY_BUMP) - GetDepthInMainChain());
 }
 
 
@@ -2784,7 +2784,7 @@ bool InitBlockIndex() {
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
         
-        if (false) //if (true && block.GetHash() != hashGenesisBlock)
+        if (true && block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're

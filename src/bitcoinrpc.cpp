@@ -235,6 +235,7 @@ static const CRPCCommand vRPCCommands[] =
     { "move",                   &movecmd,                false,     false,      true },
     { "sendfrom",               &sendfrom,               false,     false,      true },
     { "sendmany",               &sendmany,               false,     false,      true },
+    { "createwager",            &createwager,            false,     false,      true },
     { "addmultisigaddress",     &addmultisigaddress,     false,     false,      true },
     { "createmultisig",         &createmultisig,         true,      true ,      false },
     { "getrawmempool",          &getrawmempool,          true,      false,      false },
@@ -1175,6 +1176,8 @@ Array RPCConvertValues(const std::string &strMethod, const std::vector<std::stri
     if (strMethod == "listsinceblock"         && n > 1) ConvertTo<boost::int64_t>(params[1]);
     if (strMethod == "sendmany"               && n > 1) ConvertTo<Object>(params[1]);
     if (strMethod == "sendmany"               && n > 2) ConvertTo<boost::int64_t>(params[2]);
+    if (strMethod == "createwager"            && n > 0) ConvertTo<double>(params[0]);
+    if (strMethod == "createwager"            && n > 1) ConvertTo<double>(params[1]);
     if (strMethod == "addmultisigaddress"     && n > 0) ConvertTo<boost::int64_t>(params[0]);
     if (strMethod == "addmultisigaddress"     && n > 1) ConvertTo<Array>(params[1]);
     if (strMethod == "createmultisig"         && n > 0) ConvertTo<boost::int64_t>(params[0]);

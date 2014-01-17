@@ -244,8 +244,8 @@
 			buildConfigurationList = 938BD50F1881A779007FC517 /* Build configuration list for PBXLegacyTarget "src" */;
 			buildPhases = (
 			);
-			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = /Users/danwalton/litecoin/src;
+			buildToolPath = "/usr/bin/make -f makefile.osx";
+			buildWorkingDirectory = /Users/danwalton/chancecoin/src;
 			dependencies = (
 			);
 			name = src;
@@ -485,6 +485,7 @@
 				938BD51A1881A8FB007FC517 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

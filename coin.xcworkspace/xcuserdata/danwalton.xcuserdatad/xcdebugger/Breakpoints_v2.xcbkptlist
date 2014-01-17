@@ -9,14 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/rpcwallet.cpp"
-            timestampString = "411533055.786742"
+            filePath = "src/wallet.cpp"
+            timestampString = "411617269.018015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "631"
-            endingLineNumber = "631"
-            landmarkName = "sendfrom(const Array&amp; params, bool fHelp)"
-            landmarkType = "7">
+            startingLineNumber = "1308"
+            endingLineNumber = "1308"
+            landmarkName = "CWallet::CreateTransaction(const vector&lt;pair&lt;CScript, int64&gt; &gt;&amp; vecSend, CWalletTx&amp; wtxNew, CReserveKey&amp; reservekey, int64&amp; nFeeRet, std::string&amp; strFailReason, const CCoinControl* coinControl)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/wallet.cpp"
-            timestampString = "411533138.083546"
+            timestampString = "411617269.018015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1423"
-            endingLineNumber = "1423"
-            landmarkName = "CWallet::SendMoneyToDestination(const CTxDestination&amp; address, int64 nValue, CWalletTx&amp; wtxNew, bool fAskFee)"
+            startingLineNumber = "1336"
+            endingLineNumber = "1336"
+            landmarkName = "CWallet::CreateTransaction(const vector&lt;pair&lt;CScript, int64&gt; &gt;&amp; vecSend, CWalletTx&amp; wtxNew, CReserveKey&amp; reservekey, int64&amp; nFeeRet, std::string&amp; strFailReason, const CCoinControl* coinControl)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/main.cpp"
+            timestampString = "411617859.738183"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "706"
+            endingLineNumber = "706"
+            landmarkName = "CTxMemPool::accept(CValidationState &amp;state, CTransaction &amp;tx, bool fCheckInputs, bool fLimitFree, bool* pfMissingInputs)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

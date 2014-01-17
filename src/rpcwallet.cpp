@@ -301,7 +301,29 @@ Value sendtoaddress(const Array& params, bool fHelp)
 
     return wtx.GetHash().GetHex();
 }
+Value createwager(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() < 2 || params.size() > 2)
+        throw runtime_error(
+                            "createwager <amount> <odds>\n"
+                            "<amount> is a real and is rounded to the nearest 0.00000001"
+                            + HelpRequiringPassphrase());
+    int64 nAmount = AmountFromValue(params[0]);
+    int64 feeret = 0;
+    fprintf(stderr,"%f,%f\n",params[0].get_real(),params[1].get_real());
+    CWalletTx wtxNew;
+    CReserveKey reservekey(pwalletMain);
+    std::string fail;
+    if (!pwalletMain->CreateWager(nAmount, 0.5, wtxNew, reservekey, feeret, fail))
+    {
+        return fail;
+    }
+    if (!pwalletMain->CommitTransaction(wtxNew, reservekey))
+        return _("Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.");
 
+    return wtxNew.GetHash().GetHex();
+    
+}
 Value listaddressgroupings(const Array& params, bool fHelp)
 {
     if (fHelp)
